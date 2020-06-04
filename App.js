@@ -1,11 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
 
-export default function App() {
+
+export default function FoodTrackerApp() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <ScrollView>
+      <Text style={styles.headerTitleStyle}>Food Tracker</Text> 
+      <View style={styles.container}>
+      <TouchableOpacity onPress={()=>{alert("do something")}}> 
+      <Image style={styles.image} source={require("./assets/fast-food.png")}/>     
+      <Text style={styles.buttonText}>Add your first meal!</Text>
+      </TouchableOpacity>
     </View>
+  </ScrollView>
+    
   );
 }
 
@@ -16,4 +24,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerTitleStyle: {
+    paddingTop: 10,
+    color: '#000000',
+    textAlign: 'center',
+    alignSelf: 'center'
+  },
+  image: {
+    flex: 1,
+    paddingTop: 400,
+    height: 312,
+    width: 312,
+    resizeMode: 'contain'
+  },
+  button: {
+    backgroundColor: '#859a9b',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 20,
+    shadowColor: '#303838',
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    shadowOpacity: 0.35,
+  },
+  buttonText: {
+    textAlign: 'center',
+    alignSelf: 'center',
+  }
 });

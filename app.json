@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Food",
-    "slug": "Food",
+    "name": "Food Tracker",
+    "slug": "Food Tracker",
     "platforms": [
       "ios",
       "android",
