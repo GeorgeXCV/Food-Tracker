@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
+import { Dropdown } from 'react-native-material-dropdown';
 import { images } from './LocalPhotos';
 
 export default class AddMealScreen extends Component {
@@ -11,7 +12,15 @@ export default class AddMealScreen extends Component {
     this.state={
       image: null,
       setImage: null,
-      imageSource : images.defaultPhoto.uri
+      imageSource : images.defaultPhoto.uri,
+      orderText: null,
+      companies: [{
+        value: 'Dominos',
+      }, {
+        value: 'Papa Johns',
+      }, {
+        value: 'Shake Shack',
+      }]
     }
   }
 
@@ -19,8 +28,18 @@ export default class AddMealScreen extends Component {
     return (
         <View style={styles.container}>
         <TouchableOpacity onPress={() => this._pickImage()}> 
-        <Image style={styles.image} source= {this.state.imageSource}/>     
-        <Text style={styles.buttonText}>Add your first meal!</Text>
+        <Image style={styles.image} source= {this.state.imageSource}/>    
+        
+        <TextInput style = {styles.textField} 
+        placeholder = "Order"
+        onChangeText={(orderText) => this.setState({orderText})}
+        /> 
+
+        <Dropdown
+        label="Company"
+        data={this.state.companies}
+        />
+
         </TouchableOpacity>
         </View>
     );
@@ -54,14 +73,22 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     image: {
-      flex: 1,
-      paddingTop: 400,
+      alignItems: 'center',
+      justifyContent: 'center',
+      // position: 'absolute',
+      top: 0,
+      bottom: 0,
       height: 312,
       width: 312,
       resizeMode: 'contain',
+    },
+    textField: {
+      marginBottom: 10,
+      height: 40,
+      width: 320,
+      borderColor: 'grey',
+      borderWidth: 1
     }
   });
