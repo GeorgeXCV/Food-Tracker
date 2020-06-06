@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Button} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
+import StarRating from 'react-native-star-rating';
 import { images } from './LocalPhotos';
 
 export default class AddMealScreen extends Component {
@@ -14,6 +15,8 @@ export default class AddMealScreen extends Component {
       setImage: null,
       imageSource : images.defaultPhoto.uri,
       orderText: null,
+      priceText: null,
+      starCount: 3,
       companies: [{
         value: 'Dominos',
       }, {
@@ -29,8 +32,9 @@ export default class AddMealScreen extends Component {
         <View style={styles.container}>
         <TouchableOpacity onPress={() => this._pickImage()}> 
         <Image style={styles.image} source= {this.state.imageSource}/>    
+        </TouchableOpacity>
         
-        <TextInput style = {styles.textField} 
+        <TextInput style = {styles.orderTextField} 
         placeholder = "Order"
         onChangeText={(orderText) => this.setState({orderText})}
         /> 
@@ -40,9 +44,39 @@ export default class AddMealScreen extends Component {
         data={this.state.companies}
         />
 
-        </TouchableOpacity>
+       <View style={{flexDirection:"row"}}>
+       <TextInput style = {styles.priceTextField} 
+        placeholder = "Price"
+        onChangeText={(priceText) => this.setState({priceText})}
+        /> 
+
+        <TextInput style = {styles.dateTimeTextFiled}
+        placeholder = "Date/Time"
+        ></TextInput>
+
+       </View>
+        
+        <TextInput style = {styles.notesField}
+        multiline = {true}
+        placeholder = "Notes"
+        ></TextInput>
+
+        <StarRating
+        disabled={false}
+        maxStars={5}
+        rating={this.state.starCount}
+        selectedStar={(rating) => this.onStarRatingPress(rating)}
+        />
+
+      
         </View>
     );
+ }
+
+ onStarRatingPress(rating) {
+   this.setState({
+     starCount: rating
+   });
  }
 
  getPermissionAsync = async () => {
@@ -80,13 +114,41 @@ const styles = StyleSheet.create({
       // position: 'absolute',
       top: 0,
       bottom: 0,
-      height: 312,
+      height: 200,
       width: 312,
-      resizeMode: 'contain',
+      resizeMode: 'cover',
     },
-    textField: {
+    orderTextField: {
       marginBottom: 10,
-      height: 40,
+      height: 30,
+      width: 320,
+      borderColor: 'grey',
+      borderWidth: 1
+    },
+    companyDropdown: {
+      marginBottom: 10,
+      height: 30,
+      width: 320,
+      borderColor: 'grey',
+      borderWidth: 1
+    },
+    priceTextField: {
+      marginBottom: 10,
+      height: 30,
+      width: 130,
+      borderColor: 'grey',
+      borderWidth: 1
+    },
+    dateTimeTextFiled: {
+      marginBottom: 10,
+      height: 30,
+      width: 190,
+      borderColor: 'grey',
+      borderWidth: 1
+    },
+    notesField: {
+      marginBottom: 10,
+      height: 80,
       width: 320,
       borderColor: 'grey',
       borderWidth: 1

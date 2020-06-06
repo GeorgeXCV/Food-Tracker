@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\George\Downloads\Food Tracker\node_modules\@babel\compat-data\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\George\Downloads\Food Tracker\node_modules\file-uri-to-path\test'
 
 npm manifest: 
   {
@@ -32,9 +32,10 @@ npm manifest:
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+      "react-native-date-picker": "^2.7.10",
       "react-native-gesture-handler": "^1.6.1",
       "react-native-material-dropdown": "^0.11.1",
-      "react-native-reanimated": "^1.9.0",
+      "react-native-reanimated": "~1.7.0",
       "react-native-router-flux": "^4.2.0",
       "react-native-screens": "^2.8.0",
       "react-native-web": "~0.11.7"
@@ -4443,7 +4444,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.10, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4536,10 +4537,49 @@ Lockfile:
       invariant "^2.2.4"
       prop-types "^15.7.2"
   
-  react-native-reanimated@^1.9.0:
-    version "1.9.0"
-    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz#38676c99dd585504fdc7331efb45e5f48ec7339a"
-    integrity sha512-Aj+spgIHRiVv7ezGADxnSH1EoKrQRD2+XaSiGY0MiB/pvRNNrZPSJ+3NVpvLwWf9lZMOP7dwqqyJIzoZgBDt8w==
+  react-native-material-buttons@^0.5.0:
+    version "0.5.0"
+    resolved "https://registry.yarnpkg.com/react-native-material-buttons/-/react-native-material-buttons-0.5.0.tgz#ab2b3e3fc3f500ca713f51e9d75978aff602152a"
+    integrity sha1-qys+P8P1AMpxP1Hp11l4r/YCFSo=
+    dependencies:
+      prop-types "^15.5.9"
+      react-native-material-ripple "^0.7.0"
+  
+  react-native-material-dropdown@^0.11.1:
+    version "0.11.1"
+    resolved "https://registry.yarnpkg.com/react-native-material-dropdown/-/react-native-material-dropdown-0.11.1.tgz#c0fe434a8e617941ef910ba44d2f07c8f37584fe"
+    integrity sha1-wP5DSo5heUHvkQukTS8HyPN1hP4=
+    dependencies:
+      prop-types "^15.5.9"
+      react-native-material-buttons "^0.5.0"
+      react-native-material-ripple "^0.8.0"
+      react-native-material-textfield "^0.12.0"
+  
+  react-native-material-ripple@^0.7.0:
+    version "0.7.5"
+    resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.7.5.tgz#e2af5110680532f14aea3c3a438247be2ffef659"
+    integrity sha1-4q9REGgFMvFK6jw6Q4JHvi/+9lk=
+    dependencies:
+      prop-types "^15.5.10"
+  
+  react-native-material-ripple@^0.8.0:
+    version "0.8.0"
+    resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.8.0.tgz#b8c24e6fdea2af2a21e8468b1f40b35483019e2f"
+    integrity sha1-uMJOb96iryoh6EaLH0CzVIMBni8=
+    dependencies:
+      prop-types "^15.5.10"
+  
+  react-native-material-textfield@^0.12.0:
+    version "0.12.0"
+    resolved "https://registry.yarnpkg.com/react-native-material-textfield/-/react-native-material-textfield-0.12.0.tgz#3fba19d76ab89f67052c81e082152fc243d82a3f"
+    integrity sha1-P7oZ12q4n2cFLIHgghUvwkPYKj8=
+    dependencies:
+      prop-types "^15.5.9"
+  
+  react-native-reanimated@~1.7.0:
+    version "1.7.1"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.1.tgz#6363c7f3ebbabc56a05d5dccaf09d95f3b6a2d69"
+    integrity sha512-aBwhoQdH4shkeTPbi7vKcAwYOzBp/6zElEKuIOgby11TceoM7y5SgNImC3HbDWWld3QV2PA2AgQGwAy51WgF3Q==
     dependencies:
       fbjs "^1.0.0"
   
