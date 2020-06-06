@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
@@ -71,6 +71,11 @@ export default class AddMealScreen extends Component {
       
         </View>
     );
+ }
+
+
+ static saveMeal() {
+   console.log("Saving")
  }
 
  onStarRatingPress(rating) {

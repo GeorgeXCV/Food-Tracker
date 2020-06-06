@@ -1,4 +1,5 @@
 import React from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 
 import NewUserScreen from './NewUserScreen';
@@ -17,6 +18,13 @@ export default function FoodTrackerApp() {
         key="addMeal"
         component={AddMealScreen}
         title="Add Meal"
+        renderRightButton={() =>(
+          <View>
+            <TouchableOpacity onPress={() => AddMealScreen.saveMeal()}>
+              <Text>Add</Text>
+            </TouchableOpacity>
+          </View>
+        )}
         />
      </Scene>
     </Router>
