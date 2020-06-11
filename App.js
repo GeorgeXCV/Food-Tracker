@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useRef } from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 
@@ -6,27 +6,32 @@ import NewUserScreen from './NewUserScreen';
 import AddMealScreen from './AddMealScreen';
 
 export default function FoodTrackerApp() {
+  
+  const _AddMealScreen = useRef();
+
   return (
-   <Router>
-     <Scene key="root">
-      <Scene key="newUser"
-      component={NewUserScreen}
-      title="Food Tracker"
-      initial
-      />
-      <Scene
-        key="addMeal"
-        component={AddMealScreen}
-        title="Add Meal"
-        renderRightButton={() =>(
-          <View>
-            <TouchableOpacity onPress={() => AddMealScreen.saveMeal()}>
-              <Text>Add</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+    <Router>
+      <Scene key="root">
+        <Scene key="newUser" 
+        component={NewUserScreen} 
+        title="Food Tracker App" 
+        initial 
         />
-     </Scene>
+        <Scene
+          key="addMeal"
+          component={() => <AddMealScreen ref={_AddMealScreen} />}
+          title="Add Meal"
+          renderRightButton={() => (
+            <View>
+              <TouchableOpacity
+                onPress={() => _AddMealScreen.current.saveMeal()}
+              >
+                <Text>Add</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      </Scene>
     </Router>
   );
 }

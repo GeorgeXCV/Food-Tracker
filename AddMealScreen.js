@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { images } from './LocalPhotos';
 import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
 import StarRating from 'react-native-star-rating';
-import { images } from './LocalPhotos';
+import Data from './Data';
+
+const data = new Data();
 
 export default class AddMealScreen extends Component {
-
+  
   constructor() {
     super();
     this.state={
       image: null,
       setImage: null,
       imageSource : images.defaultPhoto.uri,
-      orderText: null,
-      priceText: null,
+      orderText: '',
+      priceText: '',
+      dateTimeText: '',
+      notesTextField: '',
       starCount: 3,
       companies: [{
         value: 'Dominos',
@@ -38,7 +43,7 @@ export default class AddMealScreen extends Component {
         placeholder = "Order"
         onChangeText={(orderText) => this.setState({orderText})}
         /> 
-
+  
         <Dropdown
         label="Company"
         data={this.state.companies}
@@ -52,6 +57,7 @@ export default class AddMealScreen extends Component {
 
         <TextInput style = {styles.dateTimeTextFiled}
         placeholder = "Date/Time"
+        onChangeText={(dateTimeText) => this.setState({dateTimeText})}
         ></TextInput>
 
        </View>
@@ -59,6 +65,7 @@ export default class AddMealScreen extends Component {
         <TextInput style = {styles.notesField}
         multiline = {true}
         placeholder = "Notes"
+        onChangeText={(notesTextField) => this.setState({notesTextField})}
         ></TextInput>
 
         <StarRating
@@ -67,15 +74,30 @@ export default class AddMealScreen extends Component {
         rating={this.state.starCount}
         selectedStar={(rating) => this.onStarRatingPress(rating)}
         />
-
-      
         </View>
     );
  }
 
 
- static saveMeal() {
-   console.log("Saving")
+  saveMeal = async () => {
+  
+     await data.saveObject('image', this.state.imageSource)
+     await data.saveString('order', this.state.orderText)
+     await data.saveString('price', this.state.priceText)
+     await data.saveString('datetime', this.state.dateTimeText)
+     await data.saveString('notes', this.state.notesTextField)
+
+     // Save Company - Dropdown
+
+     // Save rating - Int
+
+     await data.getObjectData('image');
+     await data.getStringData('order');
+     await data.getStringData('price');
+     await data.getStringData('datetime');
+     await data.getStringData('notes');
+
+    // Redirect to new screen
  }
 
  onStarRatingPress(rating) {
