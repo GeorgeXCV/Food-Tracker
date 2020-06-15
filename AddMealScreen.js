@@ -28,7 +28,8 @@ export default class AddMealScreen extends Component {
         value: 'Papa Johns',
       }, {
         value: 'Shake Shack',
-      }]
+      }],
+      selectedCompany: ''
     }
   }
 
@@ -47,6 +48,7 @@ export default class AddMealScreen extends Component {
         <Dropdown
         label="Company"
         data={this.state.companies}
+        onChangeText={(selectedCompany) => this.setState({selectedCompany})}
         />
 
        <View style={{flexDirection:"row"}}>
@@ -80,22 +82,23 @@ export default class AddMealScreen extends Component {
 
 
   saveMeal = async () => {
-  
+     // Save
      await data.saveObject('image', this.state.imageSource)
      await data.saveString('order', this.state.orderText)
+     await data.saveString('company', this.state.selectedCompany)
      await data.saveString('price', this.state.priceText)
      await data.saveString('datetime', this.state.dateTimeText)
      await data.saveString('notes', this.state.notesTextField)
+     await data.saveObject ('rating', this.state.starCount)
 
-     // Save Company - Dropdown
-
-     // Save rating - Int
-
-     await data.getObjectData('image');
-     await data.getStringData('order');
-     await data.getStringData('price');
-     await data.getStringData('datetime');
-     await data.getStringData('notes');
+     // Retrieve
+     await data.getObjectData('image')
+     await data.getStringData('order')
+     await data.getStringData('company')
+     await data.getStringData('price')
+     await data.getStringData('datetime')
+     await data.getStringData('notes')
+     await data.getObjectData('rating')
 
     // Redirect to new screen
  }

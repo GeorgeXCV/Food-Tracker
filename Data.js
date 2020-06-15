@@ -27,8 +27,7 @@ export default class Data {
         
         saveObject = async (key, value) => {
             try {
-                const jsonValue = JSON.stringify(value)
-                await AsyncStorage.setItem(key, jsonValue)
+                 await AsyncStorage.setItem(key, JSON.stringify(value))
             } catch (error) {
                 console.log('Error storing Object: ' + error)
             }
@@ -37,8 +36,13 @@ export default class Data {
         
         getObjectData = async (key) => {
             try {
-                const jsonValue = await AsyncStorage.getItem(key)
-                return jsonValue != null ? JSON.parse(jsonValue) : null;
+                const value = await AsyncStorage.getItem(key)
+                if (value !== null) {
+                    console.log(JSON.parse(value))
+                } 
+                else {
+                    throw 'Failed to get Object Data.'
+                }
             } catch (error) {
                 console.log('Error retrieving object data: ' + error)
             }
