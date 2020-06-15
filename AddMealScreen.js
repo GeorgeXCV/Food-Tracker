@@ -6,6 +6,7 @@ import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
 import StarRating from 'react-native-star-rating';
 import Data from './Data';
+import { Actions } from 'react-native-router-flux';
 
 const data = new Data();
 
@@ -101,6 +102,7 @@ export default class AddMealScreen extends Component {
      await data.getObjectData('rating')
 
     // Redirect to new screen
+    Actions.recentMeals();
  }
 
  onStarRatingPress(rating) {

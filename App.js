@@ -4,6 +4,7 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 
 import NewUserScreen from './NewUserScreen';
 import AddMealScreen from './AddMealScreen';
+import RecentMealsScreen from './RecentMealsScreen';
 
 export default function FoodTrackerApp() {
   
@@ -31,7 +32,13 @@ export default function FoodTrackerApp() {
             </View>
           )}
         />
+     <Scene
+      key="recentMeals"
+      component={RecentMealsScreen}
+      title="Recent Meals"
+      />
       </Scene>
+     
     </Router>
   );
 }
