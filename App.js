@@ -36,6 +36,7 @@ export default function FoodTrackerApp() {
       key="recentMeals"
       component={RecentMealsScreen}
       title="Recent Meals"
+      renderBackButton={()=><View/>}
       />
       </Scene>
      
