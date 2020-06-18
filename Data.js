@@ -16,6 +16,7 @@ export default class Data {
                 if (value !== null) {
                     // Display value
                     console.log(value);
+                    return value;
                 }
                 else {
                     throw 'Key not found';
@@ -39,6 +40,7 @@ export default class Data {
                 const value = await AsyncStorage.getItem(key)
                 if (value !== null) {
                     console.log(JSON.parse(value))
+                    return value;
                 } 
                 else {
                     throw 'Failed to get Object Data.'

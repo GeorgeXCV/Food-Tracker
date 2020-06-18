@@ -92,15 +92,6 @@ export default class AddMealScreen extends Component {
      await data.saveString('notes', this.state.notesTextField)
      await data.saveObject ('rating', this.state.starCount)
 
-     // Retrieve
-     await data.getObjectData('image')
-     await data.getStringData('order')
-     await data.getStringData('company')
-     await data.getStringData('price')
-     await data.getStringData('datetime')
-     await data.getStringData('notes')
-     await data.getObjectData('rating')
-
     // Redirect to new screen
     Actions.recentMeals();
  }
