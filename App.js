@@ -37,6 +37,15 @@ export default function FoodTrackerApp() {
       component={RecentMealsScreen}
       title="Recent Meals"
       renderBackButton={()=><View/>}
+      renderRightButton={()=> (
+        <View>
+          <TouchableOpacity
+            onPress={() => Actions.addMeal()}
+            >
+            <Text>Add</Text>
+          </TouchableOpacity>
+        </View>
+      )}
       />
       </Scene>
      
