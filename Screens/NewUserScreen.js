@@ -7,7 +7,7 @@ const NewUserScreen = () => {
         <ScrollView>
         <View style={styles.container}>
         <TouchableOpacity onPress={() => Actions.addMeal()}> 
-        <Image style={styles.image} source={require("./assets/fast-food.png")}/>     
+        <Image style={styles.image} source={require("../assets/fast-food.png")}/>     
         <Text style={styles.buttonText}>Add your first meal!</Text>
         </TouchableOpacity>
       </View>

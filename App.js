@@ -2,9 +2,9 @@ import React, { Component, useRef } from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 
-import NewUserScreen from './NewUserScreen';
-import AddMealScreen from './AddMealScreen';
-import RecentMealsScreen from './RecentMealsScreen';
+import NewUserScreen from './Screens/NewUserScreen';
+import AddMealScreen from './Screens/AddMealScreen';
+import RecentMealsScreen from './Screens/RecentMealsScreen';
 
 export default function FoodTrackerApp() {
   
@@ -16,7 +16,7 @@ export default function FoodTrackerApp() {
         <Scene key="newUser" 
         component={NewUserScreen} 
         title="Food Tracker App" 
-        initial 
+        // initial 
         />
         <Scene
           key="addMeal"
@@ -36,6 +36,7 @@ export default function FoodTrackerApp() {
       key="recentMeals"
       component={RecentMealsScreen}
       title="Recent Meals"
+      initial 
       renderBackButton={()=><View/>}
       renderRightButton={()=> (
         <View>

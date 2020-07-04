@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, AsyncStorage} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { images } from './LocalPhotos';
+import { images } from '../LocalPhotos';
 import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
 import StarRating from 'react-native-star-rating';
-import Data from './Data';
+import Data from '../Data';
 import { Actions } from 'react-native-router-flux';
-
-const data = new Data();
+import 'react-native-get-random-values';
+import * as Random from 'expo-random';
 
 export default class AddMealScreen extends Component {
   
@@ -81,26 +81,42 @@ export default class AddMealScreen extends Component {
     );
  }
 
-
+ // Save 
   saveMeal = async () => {
-     // Save
-     await data.saveObject('image', this.state.imageSource)
-     await data.saveString('order', this.state.orderText)
-     await data.saveString('company', this.state.selectedCompany)
-     await data.saveString('price', this.state.priceText)
-     await data.saveString('datetime', this.state.dateTimeText)
-     await data.saveString('notes', this.state.notesTextField)
-     await data.saveObject ('rating', this.state.starCount)
 
-    // Redirect to new screen
-    Actions.recentMeals();
+    try {
+      let meal = {
+        image: this.state.imageSource,
+        orderName: this.state.orderText,
+        companyName: this.state.selectedCompany,
+        price: this.state.priceText,
+        dateTime: this.state.dateTimeText,
+        notes: this.state.notesTextField,
+        rating: this.state.starCount
+      };
+      
+      const ID = await Random.getRandomBytesAsync(16);
+  
+      await AsyncStorage.setItem(ID.toString(), JSON.stringify(meal)).then(() => {
+        // Redirect to new screen
+        Actions.recentMeals();
+      })
+    } catch (error) {
+      console.log("Save Meal error: " + error)
+    }
+
+   
  }
+
+ // Star Rating
 
  onStarRatingPress(rating) {
    this.setState({
      starCount: rating
    });
  }
+
+ // Image Picker Functions
 
  getPermissionAsync = async () => {
    if (Constants.platform.ios) {
