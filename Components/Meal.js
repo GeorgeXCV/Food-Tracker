@@ -1,12 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
 import StarRating from 'react-native-star-rating';
+import { Actions } from 'react-native-router-flux';
 
 const { width } = Dimensions.get('window')
 
 export default function Meal({ image, order, company, dateTime, rating }) {
     return (
-      <View style={styles.meal}>
+      <View>
+        <TouchableOpacity 
+        style={styles.meal}
+        onPress={() => Actions.mealDetails()}>
         <Image style={styles.image} source= {image}/>
         <Text style={styles.orderText}>{order}</Text>
         <Text style={styles.companyText}>{company}</Text>
@@ -18,6 +22,7 @@ export default function Meal({ image, order, company, dateTime, rating }) {
         maxStars={5}
         rating={rating}
         />
+        </TouchableOpacity>
       </View>
     );
   }

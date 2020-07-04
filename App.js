@@ -5,6 +5,7 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 import NewUserScreen from './Screens/NewUserScreen';
 import AddMealScreen from './Screens/AddMealScreen';
 import RecentMealsScreen from './Screens/RecentMealsScreen';
+import MealDetailsScreen from './Screens/MealDetailsScreen';
 
 export default function FoodTrackerApp() {
   
@@ -44,6 +45,18 @@ export default function FoodTrackerApp() {
             onPress={() => Actions.addMeal()}
             >
             <Text>Add</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+      />
+      <Scene
+      key="mealDetails"
+      component={MealDetailsScreen}
+      title="Meal Details" // Change this to order name?
+      renderRightButton={()=> ( // Add Edit logic
+        <View>
+          <TouchableOpacity>
+            <Text>Edit</Text>
           </TouchableOpacity>
         </View>
       )}
