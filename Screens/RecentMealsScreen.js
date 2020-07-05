@@ -46,7 +46,9 @@ export default class RecentMealsScreen extends Component {
             image = {item.image}
             order={item.orderName}
             company={item.companyName} 
-            dateTime={item.dateTime} 
+            price={item.price}
+            dateTime={item.dateTime}
+            notes={item.notes} 
             rating = {item.rating}
             />
           }

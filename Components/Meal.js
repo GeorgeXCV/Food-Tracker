@@ -5,12 +5,20 @@ import { Actions } from 'react-native-router-flux';
 
 const { width } = Dimensions.get('window')
 
-export default function Meal({ image, order, company, dateTime, rating }) {
+export default function Meal({ image, order, company, price, dateTime, notes, rating }) {
     return (
       <View>
         <TouchableOpacity 
         style={styles.meal}
-        onPress={() => Actions.mealDetails()}>
+        onPress={() => Actions.mealDetails({
+          mealDetailsImage: image,
+          mealDetailsOrder: order,
+          mealDetailsCompany: company,
+          mealDetailsPrice: price,
+          mealDetailsDateTime: dateTime,
+          mealDetailsNotes: notes,
+          mealDetailsRating: rating
+        })}>
         <Image style={styles.image} source= {image}/>
         <Text style={styles.orderText}>{order}</Text>
         <Text style={styles.companyText}>{company}</Text>
