@@ -9,6 +9,7 @@ export default function Meal({ image, order, company, price, dateTime, notes, ra
     return (
       <View>
         <TouchableOpacity 
+        activeOpacity={1}
         style={styles.meal}
         onPress={() => Actions.mealDetails({
           mealDetailsImage: image,
@@ -41,12 +42,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
       },
       meal: {
-        // backgroundColor: '#f9c2ff',
+        backgroundColor: '#fff',
         padding: 20,
-        marginVertical: 5,
         marginHorizontal: 0,
-        height: 200
+        height: 200,
       },
+      rowFront: {
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        justifyContent: 'center',
+        height: 200,
+    },
       image: {
         alignItems: 'center',
         justifyContent: 'center',

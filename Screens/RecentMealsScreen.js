@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList, AsyncStorage} from 'react-native';
-import StarRating from 'react-native-star-rating';
+import { StyleSheet, View, FlatList, AsyncStorage, Dimensions, Text} from 'react-native';
 import Meal from '../Components/Meal';
+import { SwipeListView } from 'react-native-swipe-list-view';
 
 export default class RecentMealsScreen extends Component {
   
@@ -35,11 +35,21 @@ export default class RecentMealsScreen extends Component {
       }
     }
 
+  
+  renderHiddenItem = () => (
+    <View style={styles.rowBack}>
+            <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
+                <Text style={styles.backTextWhite}>Delete</Text>
+            </View>
+        </View>
+  );
+
   // Get Meal IDs and display them in list
   render() {
     return (
         <View style={styles.container}>
-          <FlatList
+          <SwipeListView
+          disableRightSwipe
           data={this.state.meals}
           renderItem={ ({item}) => 
             <Meal 
@@ -52,6 +62,9 @@ export default class RecentMealsScreen extends Component {
             rating = {item.rating}
             />
           }
+          renderHiddenItem={this.renderHiddenItem}
+          rightOpenValue={-Dimensions.get('window').width}
+          useNativeDriver={false}
           />
       </View>
     );
@@ -87,5 +100,36 @@ const styles = StyleSheet.create({
     },
     starRating: {
       width: 100
-    }
+    },
+    backTextWhite: {
+      color: '#FFF',
+  },
+  rowFront: {
+      alignItems: 'center',
+      backgroundColor: '#CCC',
+      borderBottomColor: 'black',
+      borderBottomWidth: 1,
+      justifyContent: 'center',
+      height: 50,
+  },
+  rowBack: {
+      alignItems: 'center',
+      backgroundColor: 'red',
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingLeft: 15,
+  },
+  backRightBtn: {
+      alignItems: 'center',
+      bottom: 0,
+      justifyContent: 'center',
+      position: 'absolute',
+      top: 0,
+      width: 75,
+  },
+  backRightBtnRight: {
+      backgroundColor: 'red',
+      right: 0,
+  },
   });

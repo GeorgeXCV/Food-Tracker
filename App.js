@@ -55,7 +55,9 @@ export default function FoodTrackerApp() {
       title="Meal Details" // Change this to order name?
       renderRightButton={()=> ( // Add Edit logic
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.addMeal()}
+          >
             <Text>Edit</Text>
           </TouchableOpacity>
         </View>
