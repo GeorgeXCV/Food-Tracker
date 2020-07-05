@@ -9,7 +9,7 @@ export default function Meal({ image, order, company, price, dateTime, notes, ra
     return (
       <View>
         <TouchableOpacity 
-        activeOpacity={1}
+        // activeOpacity={1}
         style={styles.meal}
         onPress={() => Actions.mealDetails({
           mealDetailsImage: image,

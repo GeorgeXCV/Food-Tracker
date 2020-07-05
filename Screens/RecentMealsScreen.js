@@ -52,6 +52,7 @@ export default class RecentMealsScreen extends Component {
           disableRightSwipe
           data={this.state.meals}
           renderItem={ ({item}) => 
+          <View style={styles.container}>
             <Meal 
             image = {item.image}
             order={item.orderName}
@@ -61,6 +62,7 @@ export default class RecentMealsScreen extends Component {
             notes={item.notes} 
             rating = {item.rating}
             />
+            </View>
           }
           renderHiddenItem={this.renderHiddenItem}
           rightOpenValue={-Dimensions.get('window').width}
