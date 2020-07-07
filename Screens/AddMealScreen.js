@@ -104,8 +104,6 @@ export default class AddMealScreen extends Component {
     } catch (error) {
       console.log("Save Meal error: " + error)
     }
-
-   
  }
 
  // Star Rating

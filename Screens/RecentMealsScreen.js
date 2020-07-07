@@ -22,11 +22,15 @@ export default class RecentMealsScreen extends Component {
         const data = [];
         let keys = await AsyncStorage.getAllKeys();
         // await AsyncStorage.multiRemove(keys);
-        for (let inKey of keys) {
-          let obj = await AsyncStorage.getItem(inKey);
-          obj = JSON.parse(obj);
-          data.push(obj);
+        if (keys !== null) {
+          for (let inKey of keys) {
+            let obj = await AsyncStorage.getItem(inKey);
+            obj = JSON.parse(obj);
+            obj["key"] = inKey;
+            data.push(obj);
+        }
       }
+        
       this.setState({
         meals: data
       })
@@ -44,13 +48,30 @@ export default class RecentMealsScreen extends Component {
         </View>
   );
 
+  onSwipeValueChange = async swipeData => {
+    const {key, value} = swipeData;
+
+    if (value < -Dimensions.get('window').width) { // If Swiped across the screen fully, then delete
+      await this.deleteMeal(key);
+      await this.getAllMeals();
+    }
+  }
+
+  deleteMeal = async (key) => {
+    try {
+         await AsyncStorage.removeItem(key);
+    } catch (error) {
+        console.log('Error deleting Meal: ' + error)
+    }
+}
+
   // Get Meal IDs and display them in list
   render() {
     return (
         <View style={styles.container}>
-          <SwipeListView
-          disableRightSwipe
+          <SwipeListView  
           data={this.state.meals}
+          extraData={this.state.meals} // Re-render when state updates
           renderItem={ ({item}) => 
           <View style={styles.container}>
             <Meal 
@@ -62,11 +83,13 @@ export default class RecentMealsScreen extends Component {
             notes={item.notes} 
             rating = {item.rating}
             />
-            </View>
+            </View>         
           }
+          disableRightSwipe
           renderHiddenItem={this.renderHiddenItem}
           rightOpenValue={-Dimensions.get('window').width}
           useNativeDriver={false}
+          onSwipeValueChange={this.onSwipeValueChange}
           />
       </View>
     );
