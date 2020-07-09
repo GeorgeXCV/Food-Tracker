@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, AsyncStorage} from 'react-native';
+import { StyleSheet, Text, View, Image, AsyncStorage, TouchableOpacity} from 'react-native';
+import { Router, Scene, Actions } from 'react-native-router-flux';
 import StarRating from 'react-native-star-rating';
 import Meal from '../Components/Meal';
 
@@ -28,6 +29,19 @@ export default class MealDetailsScreen extends Component {
       </View>
     );
   }
+
+  navigateToEdit() {
+    Actions.addMeal({
+      mealImage: this.props.mealDetailsImage,
+      mealOrder: this.props.mealDetailsOrder,
+      mealCompany: this.props.mealDetailsCompany,
+      mealDateTime: this.props.mealDetailsDateTime,
+      mealPrice: this.props.mealDetailsPrice,
+      mealNotes: this.props.mealDetailsNotes,
+      mealRating: this.props.mealDetailsRating
+    })
+  }
+
 }
 
 const styles = StyleSheet.create({

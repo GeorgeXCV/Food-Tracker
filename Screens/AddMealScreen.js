@@ -34,6 +34,28 @@ export default class AddMealScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    this.enterEditModeIfRequired();
+  }
+
+  enterEditModeIfRequired = () => {
+    try {
+         if (this.props.mealOrder !== undefined) {
+           this.setState({
+            imageSource : this.props.mealImage,
+            orderText: this.props.mealOrder,
+            priceText: this.props.mealPrice,
+            dateTimeText: this.props.mealDateTime,
+            notesTextField: this.props.mealNotes,
+            starCount: this.props.mealRating,
+            selectedCompany: this.props.mealCompany
+           })
+         }
+    } catch (error) {
+        console.log('Error entering edit mode: ' + error)
+    }
+  }
+
   render() {
     return (
         <View style={styles.container}>
@@ -41,25 +63,29 @@ export default class AddMealScreen extends Component {
         <Image style={styles.image} source= {this.state.imageSource}/>    
         </TouchableOpacity>
         
-        <TextInput style = {styles.orderTextField} 
+        <TextInput style = {styles.orderTextField}
         placeholder = "Order"
+        value={this.state.orderText} 
         onChangeText={(orderText) => this.setState({orderText})}
         /> 
   
         <Dropdown
         label="Company"
         data={this.state.companies}
+        value={this.state.selectedCompany}
         onChangeText={(selectedCompany) => this.setState({selectedCompany})}
         />
 
        <View style={{flexDirection:"row"}}>
        <TextInput style = {styles.priceTextField} 
         placeholder = "Price"
+        value = {this.state.priceText} 
         onChangeText={(priceText) => this.setState({priceText})}
         /> 
 
         <TextInput style = {styles.dateTimeTextFiled}
         placeholder = "Date/Time"
+        value = {this.state.dateTimeText} 
         onChangeText={(dateTimeText) => this.setState({dateTimeText})}
         ></TextInput>
 
@@ -68,6 +94,7 @@ export default class AddMealScreen extends Component {
         <TextInput style = {styles.notesField}
         multiline = {true}
         placeholder = "Notes"
+        value = {this.state.notesTextField} 
         onChangeText={(notesTextField) => this.setState({notesTextField})}
         ></TextInput>
 
@@ -83,7 +110,6 @@ export default class AddMealScreen extends Component {
 
  // Save 
   saveMeal = async () => {
-
     try {
       let meal = {
         image: this.state.imageSource,
