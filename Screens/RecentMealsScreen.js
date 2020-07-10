@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, FlatList, AsyncStorage, Dimensions, Text} from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Image, AsyncStorage, Dimensions, Text} from 'react-native';
 import Meal from '../Components/Meal';
+import { Actions } from 'react-native-router-flux';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
 export default class RecentMealsScreen extends Component {
@@ -22,24 +23,27 @@ export default class RecentMealsScreen extends Component {
         const data = [];
         let keys = await AsyncStorage.getAllKeys();
         // await AsyncStorage.multiRemove(keys);
-        if (keys !== null) {
+        if (keys.length !== 0) {
           for (let inKey of keys) {
             let obj = await AsyncStorage.getItem(inKey);
             obj = JSON.parse(obj);
             obj["key"] = inKey;
             data.push(obj);
         }
+        this.setState({
+          meals: data,
+          isDataReady: true
+        })
+      } else {
+        this.setState({
+          isDataReady: false
+        })   
       }
-        
-      this.setState({
-        meals: data
-      })
       } catch (error) {
         console.log("Error saving all meals. Error: " + error)
       }
     }
 
-  
   renderHiddenItem = () => (
     <View style={styles.rowBack}>
             <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
@@ -67,7 +71,8 @@ export default class RecentMealsScreen extends Component {
 
   // Get Meal IDs and display them in list
   render() {
-    return (
+  if (this.state.isDataReady === true) {
+      return (
         <View style={styles.container}>
           <SwipeListView  
           data={this.state.meals}
@@ -94,7 +99,19 @@ export default class RecentMealsScreen extends Component {
           />
       </View>
     );
-  }
+  } else if (this.state.isDataReady === false) {
+      return (
+        <ScrollView>
+        <View style={styles.container}>
+        <TouchableOpacity onPress={() => Actions.addMeal()}> 
+        <Image style={styles.introImage} source={require("../assets/fast-food.png")}/>     
+        <Text style={styles.introText}>Add your first meal!</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+    );
+   }
+ }
 }
 
 const styles = StyleSheet.create({
@@ -129,33 +146,44 @@ const styles = StyleSheet.create({
     },
     backTextWhite: {
       color: '#FFF',
-  },
-  rowFront: {
-      alignItems: 'center',
-      backgroundColor: '#CCC',
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-      justifyContent: 'center',
-      height: 50,
-  },
-  rowBack: {
-      alignItems: 'center',
-      backgroundColor: 'red',
+    },
+    rowFront: {
+        alignItems: 'center',
+        backgroundColor: '#CCC',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        justifyContent: 'center',
+        height: 50,
+    },
+    rowBack: {
+        alignItems: 'center',
+        backgroundColor: 'red',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 15,
+    },
+    backRightBtn: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 0,
+        width: 75,
+    },
+    backRightBtnRight: {
+        backgroundColor: 'red',
+        right: 0,
+    },
+    introText: {
+      textAlign: 'center',
+      alignSelf: 'center',
+    },
+    introImage: {
       flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingLeft: 15,
-  },
-  backRightBtn: {
-      alignItems: 'center',
-      bottom: 0,
-      justifyContent: 'center',
-      position: 'absolute',
-      top: 0,
-      width: 75,
-  },
-  backRightBtnRight: {
-      backgroundColor: 'red',
-      right: 0,
-  },
+      paddingTop: 400,
+      height: 312,
+      width: 312,
+      resizeMode: 'contain'
+    },
   });

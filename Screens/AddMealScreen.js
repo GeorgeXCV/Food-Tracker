@@ -137,7 +137,6 @@ export default class AddMealScreen extends Component {
  }
 
  // Star Rating
-
  onStarRatingPress(rating) {
    this.setState({
      starCount: rating
@@ -145,7 +144,6 @@ export default class AddMealScreen extends Component {
  }
 
  // Image Picker Functions
-
  getPermissionAsync = async () => {
    if (Constants.platform.ios) {
      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
