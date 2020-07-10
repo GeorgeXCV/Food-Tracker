@@ -75,6 +75,7 @@ export default class RecentMealsScreen extends Component {
           renderItem={ ({item}) => 
           <View style={styles.container}>
             <Meal 
+            id = {item.key} // Database Key, not UI related
             image = {item.image}
             order={item.orderName}
             company={item.companyName} 

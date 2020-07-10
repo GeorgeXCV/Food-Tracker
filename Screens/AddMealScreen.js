@@ -121,12 +121,16 @@ export default class AddMealScreen extends Component {
         rating: this.state.starCount
       };
       
-      const ID = await Random.getRandomBytesAsync(16);
-  
-      await AsyncStorage.setItem(ID.toString(), JSON.stringify(meal)).then(() => {
-        // Redirect to new screen
-        Actions.recentMeals();
-      })
+      if (this.props.mealKey !== undefined) { // If Editing meal, update meal
+        await AsyncStorage.mergeItem(this.props.mealKey, JSON.stringify(meal)).then(() => {
+          Actions.recentMeals();
+        })
+      } else { // Otherwise, save as new meal
+        const ID = await Random.getRandomBytesAsync(16);
+        await AsyncStorage.setItem(ID.toString(), JSON.stringify(meal)).then(() => {
+          Actions.recentMeals();
+        })
+      }
     } catch (error) {
       console.log("Save Meal error: " + error)
     }

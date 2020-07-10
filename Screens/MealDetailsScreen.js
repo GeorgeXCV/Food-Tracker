@@ -32,6 +32,7 @@ export default class MealDetailsScreen extends Component {
 
   navigateToEdit() {
     Actions.addMeal({
+      mealKey: this.props.mealDetailsKey,
       mealImage: this.props.mealDetailsImage,
       mealOrder: this.props.mealDetailsOrder,
       mealCompany: this.props.mealDetailsCompany,
