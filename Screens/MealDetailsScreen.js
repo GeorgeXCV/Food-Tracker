@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, AsyncStorage, TouchableOpacity} from 'react-native';
-import { Router, Scene, Actions } from 'react-native-router-flux';
+import { StyleSheet, Text, View, Image} from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import StarRating from 'react-native-star-rating';
-import Meal from '../Components/Meal';
 
 export default class MealDetailsScreen extends Component {
   

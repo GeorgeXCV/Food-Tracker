@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, AsyncStorage} from 'react-native';
+import { StyleSheet, TextInput, View, Image, TouchableOpacity, AsyncStorage} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { images } from '../LocalPhotos';
 import Constants from 'expo-constants';
 import { Dropdown } from 'react-native-material-dropdown';
 import StarRating from 'react-native-star-rating';
-import Data from '../Data';
 import { Actions } from 'react-native-router-flux';
 import 'react-native-get-random-values';
 import * as Random from 'expo-random';

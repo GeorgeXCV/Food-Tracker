@@ -14,6 +14,7 @@ export default class RecentMealsScreen extends Component {
     }
   }
 
+  // Get Data
   componentDidMount() {
     this.getAllMeals();
   }
@@ -44,6 +45,7 @@ export default class RecentMealsScreen extends Component {
       }
     }
 
+  // Swipe To Delete button
   renderHiddenItem = () => (
     <View style={styles.rowBack}>
             <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
@@ -56,6 +58,7 @@ export default class RecentMealsScreen extends Component {
     const {key, value} = swipeData;
 
     if (value < -Dimensions.get('window').width) { // If Swiped across the screen fully, then delete
+      // Delete meal and then retrieve data again
       await this.deleteMeal(key);
       await this.getAllMeals();
     }
@@ -76,7 +79,11 @@ export default class RecentMealsScreen extends Component {
         <View style={styles.container}>
           <SwipeListView  
           data={this.state.meals}
-          extraData={this.state.meals} // Re-render when state updates
+          extraData={this.state.meals}
+          inverted={true}
+          contentContainerStyle={{ // Required for Inverted
+            flexGrow: 1, justifyContent: 'flex-end',
+          }}
           renderItem={ ({item}) => 
           <View style={styles.container}>
             <Meal 
@@ -99,6 +106,7 @@ export default class RecentMealsScreen extends Component {
           />
       </View>
     );
+    // Intro Screen, if no data found
   } else if (this.state.isDataReady === false) {
       return (
         <ScrollView>
