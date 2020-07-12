@@ -71,16 +71,18 @@ export default class AddMealScreen extends Component {
         <TextInput style = {styles.orderTextField}
         placeholder = "Order"
         value={this.state.orderText} 
+        returnKeyType = {"next"}
         onChangeText={(orderText) => this.setState({orderText})}
+        onSubmitEditing={() => {this.orderTextField.focus();}}
         /> 
 
-   
-
-      
         <TextInput style = {styles.orderTextField}
+        ref={(input) => {this.orderTextField = input;}}
         placeholder = "Company"
         value={this.state.companyText} 
+        returnKeyType = {"next"}
         onChangeText={(companyText) => this.setState({companyText})}
+        onSubmitEditing={() => {this.priceTextField.focus();}}
         /> 
   
         {/* <Dropdown
@@ -92,20 +94,27 @@ export default class AddMealScreen extends Component {
 
        <View style={{flexDirection:"row"}}>
        <TextInput style = {styles.priceTextField} 
+        ref={(input) => {this.priceTextField = input;}}
         placeholder = "Price"
         value = {this.state.priceText} 
+        returnKeyType = {"next"}
         onChangeText={(priceText) => this.setState({priceText})}
+        onSubmitEditing={() => {this.dateTimeTextField.focus();}}
         /> 
 
-        <TextInput style = {styles.dateTimeTextFiled}
+        <TextInput style = {styles.dateTimeTextField}
+        ref={(input) => {this.dateTimeTextField = input;}}
         placeholder = "Date/Time"
         value = {this.state.dateTimeText} 
+        returnKeyType = {"next"}
         onChangeText={(dateTimeText) => this.setState({dateTimeText})}
+        onSubmitEditing={() => {this.notesTextField.focus();}}
         ></TextInput>
 
        </View>
         
         <TextInput style = {styles.notesField}
+        ref={(input) => {this.notesTextField = input;}}
         multiline = {true}
         placeholder = "Notes"
         value = {this.state.notesTextField} 
@@ -113,6 +122,8 @@ export default class AddMealScreen extends Component {
         ></TextInput>
 
         <StarRating
+        emptyStarColor={'white'}
+        fullStarColor={'yellow'}
         disabled={false}
         maxStars={5}
         rating={this.state.starCount}
@@ -187,7 +198,7 @@ export default class AddMealScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'black',
     },
     image: {
       alignItems: 'center',
@@ -203,6 +214,7 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       height: 30,
       width: 320,
+      backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     },
@@ -210,6 +222,7 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       height: 30,
       width: 320,
+      backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     },
@@ -217,13 +230,15 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       height: 30,
       width: 130,
+      backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     },
-    dateTimeTextFiled: {
+    dateTimeTextField: {
       marginBottom: 10,
       height: 30,
       width: 190,
+      backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     },
@@ -231,6 +246,7 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       height: 80,
       width: 320,
+      backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     }
