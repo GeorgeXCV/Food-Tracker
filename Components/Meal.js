@@ -27,6 +27,8 @@ export default function Meal({ id, image, order, company, price, dateTime, notes
         <Text style={styles.dateTimeText}>{dateTime}</Text>
         <StarRating
         containerStyle={styles.starRatingContainer}
+        emptyStarColor={'white'}
+        fullStarColor={'yellow'}
         starSize={20}
         disabled={true}
         maxStars={5}
@@ -40,26 +42,19 @@ export default function Meal({ id, image, order, company, price, dateTime, notes
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
       },
       meal: {
-        backgroundColor: '#fff',
-        padding: 20,
+        backgroundColor: 'black',
+        padding: 15,
         marginHorizontal: 0,
         height: 200,
       },
-      rowFront: {
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        justifyContent: 'center',
-        height: 200,
-    },
       image: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
+        // opacity: 0.9,
         top: 5,
         right: 5,
         left: 5,
@@ -69,23 +64,23 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
       },
       orderText: {
-        color: '#000000',
+        color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
-        top: 100,
+        top: 90,
       },
       companyText: {
-        color: '#000000',
+        color: 'white',
         fontSize: 16,
-        top: 100,
+        top: 90,
       },
       dateTimeText: {
-        color: '#000000',
+        color: 'white',
         fontSize: 16,
-        top: 100,
+        top: 90,
       },
       starRatingContainer: {
-        top: 100,
+        top: 88,
         width: 50
       },
 })

@@ -117,13 +117,7 @@ export default class RecentMealsScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-    },
-    itemStyle: {
-      backgroundColor: '#f9c2ff',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
+      backgroundColor: 'black',
     },
     image: {
       alignItems: 'center',
@@ -131,29 +125,12 @@ const styles = StyleSheet.create({
       // position: 'absolute',
       top: 0,
       bottom: 0,
-      height: 150,
+      height: 160,
       width: 325,
       resizeMode: 'cover',
     },
-    text: {
-      color: '#4F50DC',
-      fontSize: 18,
-      marginVertical: 20,
-      paddingLeft: 10
-    },
-    starRating: {
-      width: 100
-    },
     backTextWhite: {
       color: '#FFF',
-    },
-    rowFront: {
-        alignItems: 'center',
-        backgroundColor: '#CCC',
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        justifyContent: 'center',
-        height: 50,
     },
     rowBack: {
         alignItems: 'center',
@@ -176,6 +153,7 @@ const styles = StyleSheet.create({
         right: 0,
     },
     introText: {
+      color: 'white',
       textAlign: 'center',
       alignSelf: 'center',
     },

@@ -9,6 +9,7 @@ import Data from '../Data';
 import { Actions } from 'react-native-router-flux';
 import 'react-native-get-random-values';
 import * as Random from 'expo-random';
+import KeyboardShift from '../Components/KeyboardShift';
 
 export default class AddMealScreen extends Component {
   
@@ -19,18 +20,19 @@ export default class AddMealScreen extends Component {
       setImage: null,
       imageSource : images.defaultPhoto.uri,
       orderText: '',
+      companyText: '',
       priceText: '',
       dateTimeText: '',
       notesTextField: '',
       starCount: 3,
-      companies: [{
-        value: 'Dominos',
-      }, {
-        value: 'Papa Johns',
-      }, {
-        value: 'Shake Shack',
-      }],
-      selectedCompany: ''
+      // companies: [{
+      //   value: 'Dominos',
+      // }, {
+      //   value: 'Papa Johns',
+      // }, {
+      //   value: 'Shake Shack',
+      // }],
+      // selectedCompany: ''
     }
   }
 
@@ -44,11 +46,12 @@ export default class AddMealScreen extends Component {
            this.setState({
             imageSource : this.props.mealImage,
             orderText: this.props.mealOrder,
+            companyText: this.props.mealCompany,
             priceText: this.props.mealPrice,
             dateTimeText: this.props.mealDateTime,
             notesTextField: this.props.mealNotes,
             starCount: this.props.mealRating,
-            selectedCompany: this.props.mealCompany
+            // selectedCompany: this.props.mealCompany
            })
          }
     } catch (error) {
@@ -58,6 +61,8 @@ export default class AddMealScreen extends Component {
 
   render() {
     return (
+      <KeyboardShift>
+      {() => (
         <View style={styles.container}>
         <TouchableOpacity onPress={() => this._pickImage()}> 
         <Image style={styles.image} source= {this.state.imageSource}/>    
@@ -68,13 +73,22 @@ export default class AddMealScreen extends Component {
         value={this.state.orderText} 
         onChangeText={(orderText) => this.setState({orderText})}
         /> 
+
+   
+
+      
+        <TextInput style = {styles.orderTextField}
+        placeholder = "Company"
+        value={this.state.companyText} 
+        onChangeText={(companyText) => this.setState({companyText})}
+        /> 
   
-        <Dropdown
+        {/* <Dropdown
         label="Company"
         data={this.state.companies}
         value={this.state.selectedCompany}
         onChangeText={(selectedCompany) => this.setState({selectedCompany})}
-        />
+        /> */}
 
        <View style={{flexDirection:"row"}}>
        <TextInput style = {styles.priceTextField} 
@@ -105,6 +119,8 @@ export default class AddMealScreen extends Component {
         selectedStar={(rating) => this.onStarRatingPress(rating)}
         />
         </View>
+         )}
+         </KeyboardShift>
     );
  }
 
@@ -114,7 +130,7 @@ export default class AddMealScreen extends Component {
       let meal = {
         image: this.state.imageSource,
         orderName: this.state.orderText,
-        companyName: this.state.selectedCompany,
+        companyName: this.state.companyText,
         price: this.state.priceText,
         dateTime: this.state.dateTimeText,
         notes: this.state.notesTextField,

@@ -1,5 +1,5 @@
 import React, { Component, useRef } from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 
 import AddMealScreen from './Screens/AddMealScreen';
@@ -13,9 +13,10 @@ render() {
     <Router>
       <Scene key="root">
         <Scene
+        navigationBarStyle={{backgroundColor: 'black'}}
+        title="Recent Meals" titleStyle={{color: 'white' }}
         key="recentMeals"
         component={RecentMealsScreen}
-        title="Recent Meals"
         initial 
         renderBackButton={()=><View/>}
         renderRightButton={()=> (
@@ -23,35 +24,37 @@ render() {
             <TouchableOpacity
               onPress={() => Actions.addMeal()}
               >
-              <Text>Add</Text>
+              <Text style={styles.navBarButtonText}>Add</Text>
             </TouchableOpacity>
           </View>
         )}
         />
         <Scene
+          navigationBarStyle={{backgroundColor: 'black'}}
+          title="Add Meal" titleStyle={{color: 'white' }}
           key="addMeal"
           component={AddMealScreen}
-          title="Add Meal"
           renderRightButton={() => (
             <View>
               <TouchableOpacity
                onPress={() => Actions.refs.addMeal.saveMeal()}
               >
-                <Text>Add</Text>
+                <Text style={styles.navBarButtonText}>Add</Text>
               </TouchableOpacity>
             </View>
           )}
         />
       <Scene
-      key="mealDetails"
+      navigationBarStyle={{backgroundColor: 'black'}}
+      title="Meal Details" titleStyle={{color: 'white' }}
+      key="mealDetails" 
       component={MealDetailsScreen}
-      title="Meal Details" // Change this to order name?
-      renderRightButton={()=> ( // Add Edit logic
+      renderRightButton={()=> (
         <View>
           <TouchableOpacity
             onPress={() => Actions.refs.mealDetails.navigateToEdit()}
             >
-            <Text>Edit</Text>
+            <Text style={styles.navBarButtonText}>Edit</Text>
             </TouchableOpacity>
         </View>
       )}
@@ -61,3 +64,11 @@ render() {
   );
  } 
 }
+
+const styles = StyleSheet.create({
+    navBarButtonText: {
+      color: 'rgb(0, 122, 255)',
+      textAlign: 'right',
+      fontSize: 17,
+    },
+})

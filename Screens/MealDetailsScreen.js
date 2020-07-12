@@ -21,7 +21,9 @@ export default class MealDetailsScreen extends Component {
         <Text style={styles.notesText}>{this.props.mealDetailsNotes}</Text>
         <StarRating
         containerStyle={styles.starRatingContainer}
-        starSize={20}
+        emptyStarColor={'white'}
+        fullStarColor={'yellow'}
+        starSize={30}
         disabled={true}
         maxStars={5}
         rating={this.props.mealDetailsRating}
@@ -48,7 +50,7 @@ export default class MealDetailsScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'black',
     },
     image: {
       alignItems: 'center',
@@ -63,33 +65,34 @@ const styles = StyleSheet.create({
       resizeMode: 'cover',
     },
     orderText: {
-      color: '#000000',
+      color: 'white',
       fontSize: 18,
       fontWeight: 'bold',
       top: 260,
     },
     companyText: {
-      color: '#000000',
+      color: 'white',
       fontSize: 16,
       top: 260,
     },
     dateTimeText: {
-      color: '#000000',
+      color: 'white',
       fontSize: 16,
       top: 260,
     },
     priceText: {
-      color: '#000000',
+      color: 'white',
       fontSize: 16,
       top: 260,
     },
     notesText: {
-      color: '#000000',
+      color: 'white',
       fontSize: 16,
       top: 260,
     },
     starRatingContainer: {
-      top: 230,
-      width: 50
+      position: 'absolute',
+      bottom: 5,
+      width: 150
     },
   });
