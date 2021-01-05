@@ -2424,10 +2424,10 @@ expo-permissions@~8.1.0:
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-8.1.0.tgz#a7f2ee91ba76ce3a467e7b10adaa9ca5201b226f"
   integrity sha512-QBHD+1J9+sGFnhoEGzMRchPweeEE0OJ9ehG/0l1BMRBA7qsLS9vRC1FTJ55NwjI0Kr4RTha9r6ZX1kZHT09f/w==
 
-expo-random@~8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/expo-random/-/expo-random-8.1.0.tgz#f59a3a0e05b09a95fefee7d4cc5e0aca9cd5c1b6"
-  integrity sha512-9n2gg83Hpg3ErkKu+a3FFOGmaPIxaHn6RuzjW24xFckdfmnrAKtbs1aU1aAcmoL1kXPvDeufRSEV/3lW93u6ug==
+expo-random@^8.1.0:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/expo-random/-/expo-random-8.3.1.tgz#1a984c64747b7976650d42c75b54087f186b6270"
+  integrity sha512-h09yiQP8mhhfzEQwYDIDrB6rnDlOkeAdya00skCCie+wCW9/5kSuVsDQZ1oE1lHVZlxzF9t0hUvYE7PI98RNYA==
   dependencies:
     base64-js "^1.3.0"
 
@@ -3451,9 +3451,9 @@ lodash.values@^4.3.0:
   integrity sha1-o6bCsOvsxcLLocF+bmIP6BtT00c=
 
 lodash@^4.0.0, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -4632,6 +4632,11 @@ react-native-star-rating@^1.1.0:
     react-native-animatable "^1.2.4"
     react-native-button "^2.3.0"
     react-native-vector-icons "^4.5.0"
+
+react-native-swipe-list-view@^3.1.3:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-3.2.5.tgz#e10297ae53c9df79a5ef93bd01f47c47ad5dc23b"
+  integrity sha512-WWXUO7rF4UD+Mu49ZKghK6wrcSREAHni6w5km5j4AqCJh8YypVvmfV2byVLTvWPzDosdxQmh/DXQHsKlnLR3uQ==
 
 react-native-tab-view@^2.11.0:
   version "2.14.4"
