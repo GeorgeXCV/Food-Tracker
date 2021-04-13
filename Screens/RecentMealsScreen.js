@@ -109,14 +109,12 @@ export default class RecentMealsScreen extends Component {
     // Intro Screen, if no data found
   } else if (this.state.isDataReady === false) {
       return (
-        <ScrollView>
         <View style={styles.container}>
         <TouchableOpacity onPress={() => Actions.addMeal()}> 
         <Image style={styles.introImage} source={require("../assets/fast-food.png")}/>     
         <Text style={styles.introText}>Add your first meal!</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
     );
    }
  }
@@ -164,12 +162,14 @@ const styles = StyleSheet.create({
       color: 'white',
       textAlign: 'center',
       alignSelf: 'center',
+      fontSize: 24,
+      fontWeight: 'bold',
     },
     introImage: {
-      flex: 1,
-      paddingTop: 400,
-      height: 312,
-      width: 312,
-      resizeMode: 'contain'
+      alignSelf: 'center',
+      width: '100%',
+      height: '75%',
+      resizeMode: 'contain',
+      marginTop: '10%'
     },
   });
