@@ -125,16 +125,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'black',
     },
-    image: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      // position: 'absolute',
-      top: 0,
-      bottom: 0,
-      height: 160,
-      width: 325,
-      resizeMode: 'cover',
-    },
     backTextWhite: {
       color: '#FFF',
     },

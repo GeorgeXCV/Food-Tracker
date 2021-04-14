@@ -10,7 +10,7 @@ export default function Meal({ id, image, order, company, price, dateTime, notes
       <View>
         <TouchableOpacity 
         // activeOpacity={1}
-        style={styles.meal}
+        style={styles.container}
         onPress={() => Actions.mealDetails({
           mealDetailsKey: id,
           mealDetailsImage: image,
@@ -22,6 +22,7 @@ export default function Meal({ id, image, order, company, price, dateTime, notes
           mealDetailsRating: rating
         })}>
         <Image style={styles.image} source= {image}/>
+        <View style={styles.mealDetailsContainer}>
         <Text style={styles.orderText}>{order}</Text>
         <Text style={styles.companyText}>{company}</Text>
         <Text style={styles.dateTimeText}>{dateTime}</Text>
@@ -34,33 +35,32 @@ export default function Meal({ id, image, order, company, price, dateTime, notes
         maxStars={5}
         rating={rating}
         />
+        </View>
         </TouchableOpacity>
       </View>
     );
   }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+      container: {
         backgroundColor: 'black',
-      },
-      meal: {
-        backgroundColor: 'black',
-        padding: 15,
         marginHorizontal: 0,
         height: 200,
+      },
+      mealDetailsContainer: {
+        paddingLeft: 5,
       },
       image: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        // opacity: 0.9,
+        opacity: 0.8,
         top: 5,
         right: 5,
         left: 5,
         bottom: 0,
-        height: 200,
-        width: 310,
+        height: "100%",
+        width: "100%",
         resizeMode: 'cover',
       },
       orderText: {
