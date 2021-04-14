@@ -13,8 +13,8 @@ render() {
     <Router>
       <Scene key="root">
         <Scene
-        navigationBarStyle={{backgroundColor: 'black'}}
-        title="Recent Meals" titleStyle={{color: 'white' }}
+        navigationBarStyle={styles.navBar}
+        title="Recent Meals" titleStyle={styles.navBarText}
         key="recentMeals"
         component={RecentMealsScreen}
         initial 
@@ -30,8 +30,8 @@ render() {
         )}
         />
         <Scene
-          navigationBarStyle={{backgroundColor: 'black'}}
-          title="Add Meal" titleStyle={{color: 'white' }}
+          navigationBarStyle={styles.navBar}
+          title="Add Meal" titleStyle={styles.navBarText}
           key="addMeal"
           component={AddMealScreen}
           renderRightButton={() => (
@@ -45,8 +45,8 @@ render() {
           )}
         />
       <Scene
-      navigationBarStyle={{backgroundColor: 'black'}}
-      title="Meal Details" titleStyle={{color: 'white' }}
+      navigationBarStyle={styles.navBar}
+      title="Meal Details" titleStyle={styles.navBarText}
       key="mealDetails" 
       component={MealDetailsScreen}
       renderRightButton={()=> (
@@ -66,9 +66,17 @@ render() {
 }
 
 const styles = StyleSheet.create({
+    navBar: {
+      backgroundColor: 'black',
+      borderBottomWidth: 0
+    },
+    navBarText: {
+      color: 'white'
+    },
     navBarButtonText: {
       color: 'rgb(0, 122, 255)',
       textAlign: 'right',
       fontSize: 17,
+      paddingRight: 10
     },
 })
