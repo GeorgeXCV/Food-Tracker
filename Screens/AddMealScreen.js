@@ -206,13 +206,13 @@ const styles = StyleSheet.create({
       top: 0,
       bottom: 0,
       height: 200,
-      width: 312,
+      width: "100%",
       resizeMode: 'cover',
     },
     orderTextField: {
       marginBottom: 10,
       height: 30,
-      width: 320,
+      width: "100%",
       backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     priceTextField: {
       marginBottom: 10,
       height: 30,
-      width: 130,
+      width: "50%",
       backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
@@ -236,15 +236,15 @@ const styles = StyleSheet.create({
     dateTimeTextField: {
       marginBottom: 10,
       height: 30,
-      width: 190,
+      width: "50%",
       backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
     },
     notesField: {
       marginBottom: 10,
-      height: 80,
-      width: 320,
+      height: "25%",
+      width: "100%",
       backgroundColor: 'white',
       borderColor: 'grey',
       borderWidth: 1
