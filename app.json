@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Food-Tracker",
-    "slug": "Food-npmTracker",
+    "slug": "Food-Tracker",
     "platforms": [
       "ios",
       "android",
@@ -22,7 +22,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "fast-food-tracker"
     }
   }
 }
