@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
       right: 5,
       left: 5,
       bottom: 0,
-      height: 250,
-      width: 310,
+      height: "40%",
+      width: "100%",
       resizeMode: 'cover',
     },
     orderText: {
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
       top: 260,
     },
     starRatingContainer: {
-      position: 'absolute',
-      bottom: 5,
-      width: 150
+      alignSelf: 'center',
+      top: 260,
+      width: 200
     },
   });
